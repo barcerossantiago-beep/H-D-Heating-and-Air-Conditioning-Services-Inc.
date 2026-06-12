@@ -1,30 +1,28 @@
 import { Reveal, Star } from "./shared"
 import { SITE, GOOGLE_REVIEWS_LINK } from "../lib/site"
 
-/* These are representative review-style placeholders attributed by neighborhood
-   (no invented names). Replace each quote with a real review pulled from your
-   Google business profile. */
+/* Real verified reviews from our Google business profile. */
 const REVIEWS = [
   {
     quote:
-      "Showed up on time, diagnosed the bad capacitor in ten minutes, fixed it on the spot. No upsell, no \"you really need a whole new system\" speech. This is who we're calling from now on.",
-    attribution: "Homeowner",
-    where: "Carmichael",
-    service: "Capacitor Replacement",
+      "Humberto is amazing. He is honest and knowledgeable. He came to our house same day late about midnight on one of the hottest days last year and fixed our A/C. I am so thankful he was more than willing to make the trip to our house so we did not have to suffer during the heat wave. He has old-school work ethic!",
+    attribution: "Lisa Knox",
+    where: "Verified Google Review",
+    service: "Emergency AC Repair",
   },
   {
     quote:
-      "Two other companies told us we needed a $9,000 new system. H&D found a $200 fix that's been running perfectly for a year. Honest, professional, and bilingual — exactly what we needed.",
-    attribution: "Homeowner",
-    where: "Citrus Heights",
-    service: "AC Diagnosis & Repair",
+      "My heater went out in the coldest part of a winter storm. Humberto went above and beyond. He had great customer service and response time was top tier. He picked up my call and was at my door within 45 minutes. I will be recommending H&D services to everyone. Thank you Humberto!",
+    attribution: "Val Valdez",
+    where: "Verified Google Review",
+    service: "Emergency Heater Repair",
   },
   {
     quote:
-      "Came out for a tune-up before summer hit, cleaned the coils, replaced a worn contactor before it failed. Quoted price was the final price. Hard to find that kind of straightforwardness anymore.",
-    attribution: "Homeowner",
-    where: "West Sacramento",
-    service: "AC Tune-Up",
+      "I'm glad I found and called Humberto from H&D Heating & Air Conditioning Services. He was quick to respond and was very professional and was able to solve my heating problem very quickly. I'm very happy with his service and repair. I highly recommend H&D Heating & Air to anyone in need of HVAC services.",
+    attribution: "Adelina Acosta",
+    where: "Verified Google Review",
+    service: "Heater Repair",
   },
 ]
 
