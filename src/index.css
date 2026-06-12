@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Bebas Neue", "Arial Narrow", sans-serif;
+  --font-body: "Barlow", system-ui, sans-serif;
+
+  --color-flame: #dc2626;
+  --color-flame-dark: #991b1b;
+  --color-flame-bright: #ef4444;
+  --color-gold: #facc15;
+  --color-gold-deep: #eab308;
+  --color-coal: #0a0a0a;
+  --color-coal-soft: #171312;
+  --color-smoke: #2a2422;
+  --color-cream: #fdf8f1;
+  --color-cream-dim: #f6ede1;
+  --color-ink: #1c1410;
+  --color-ink-soft: #57504a;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-coal);
+  color: var(--color-cream);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-coal);
+}
+
+.font-display {
+  letter-spacing: 0.02em;
+}
+
+/* marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+/* floating blobs */
+@keyframes float-a {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, -30px) scale(1.1); }
+}
+@keyframes float-b {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-35px, 25px) scale(0.95); }
+}
+.animate-float-a { animation: float-a 11s ease-in-out infinite; }
+.animate-float-b { animation: float-b 14s ease-in-out infinite; }
+
+/* heat shimmer on gradient text */
+@keyframes heat-pan {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.heat-text {
+  background: linear-gradient(90deg, #facc15, #ef4444, #dc2626, #facc15);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: heat-pan 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-float-a,
+  .animate-float-b,
+  .heat-text {
+    animation: none;
+  }
+}
