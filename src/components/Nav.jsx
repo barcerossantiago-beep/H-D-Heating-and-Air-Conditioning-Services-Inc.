@@ -6,7 +6,8 @@ import { Flame } from "./shared"
 const LINKS = [
   { label: "Services", href: "#services" },
   { label: "Why H&D", href: "#why" },
-  { label: "Service Area", href: "#area" },
+  { label: "Area", href: "#area" },
+  { label: "Tips", href: "#tips" },
   { label: "FAQ", href: "#faq" },
 ]
 

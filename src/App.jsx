@@ -5,10 +5,13 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Nav from "./components/Nav"
 import Hero from "./components/Hero"
 import Marquee from "./components/Marquee"
+import TrustStrip from "./components/TrustStrip"
 import Services from "./components/Services"
+import WhyUs from "./components/WhyUs"
+import Reviews from "./components/Reviews"
 import Gallery from "./components/Gallery"
-import Stats from "./components/Stats"
 import ServiceArea from "./components/ServiceArea"
+import Tips from "./components/Tips"
 import FAQ from "./components/FAQ"
 import CTA from "./components/CTA"
 import Footer from "./components/Footer"
@@ -41,10 +44,13 @@ export default function App() {
       <main>
         <Hero />
         <Marquee />
+        <TrustStrip />
         <Services />
+        <WhyUs />
+        <Reviews />
         <Gallery />
-        <Stats />
         <ServiceArea />
+        <Tips />
         <FAQ />
         <CTA />
       </main>
