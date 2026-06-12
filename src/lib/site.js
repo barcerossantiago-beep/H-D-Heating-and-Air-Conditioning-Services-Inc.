@@ -9,6 +9,18 @@ export const SITE = {
   rating: "5.0",
   yearsInBusiness: 4,
   zipCount: 29,
+  license: "CSLB #1090137",
+  tagline: "Keeping Sacramento Comfortable All Year Long",
+  bilingual: "Hablamos Español",
+  availability: "24/7 Service",
+}
+
+/* Real job photos. Drop the matching files into /public/photos/ and they
+   replace the branded placeholders automatically. */
+export const PHOTOS = {
+  vanEvening: "/photos/van-1.jpg",
+  techRoof: "/photos/tech-roof.jpg",
+  vanDay: "/photos/van-2.jpg",
 }
 
 export const GMAIL_COMPOSE = `https://mail.google.com/mail/?view=cm&fs=1&to=${SITE.email}&su=${encodeURIComponent(

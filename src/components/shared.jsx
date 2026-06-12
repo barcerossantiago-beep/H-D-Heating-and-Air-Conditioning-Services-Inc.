@@ -1,5 +1,13 @@
 import { useRef, useState, useEffect } from "react"
-import { motion, useInView, useReducedMotion } from "framer-motion"
+import {
+  motion,
+  useInView,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useMotionValue,
+  useTransform,
+} from "framer-motion"
 
 /* Scroll-reveal wrapper — fades & slides children in when they enter the viewport */
 export function Reveal({ children, delay = 0, y = 36, className = "", once = true }) {
@@ -99,6 +107,86 @@ export function CtaButton({ href, children, variant = "primary", className = "" 
     </Magnetic>
   )
 }
+
+/* Photo with a branded fallback — shows a gradient + flame + label if the
+   image file isn't present yet, so layouts never break. */
+export function Photo({ src, alt, label, className = "", imgClassName = "" }) {
+  const [failed, setFailed] = useState(false)
+  if (failed || !src) {
+    return (
+      <div
+        className={`relative grid place-items-center bg-gradient-to-br from-flame-dark via-coal to-coal overflow-hidden ${className}`}
+      >
+        <div className="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_30%_20%,rgba(250,204,21,0.25),transparent_55%)]" />
+        <div className="relative flex flex-col items-center gap-2 text-center px-4">
+          <Flame className="w-10 h-10 text-gold/80" />
+          <span className="text-xs font-bold uppercase tracking-[0.2em] text-cream/60">
+            {label || "H&D Photo"}
+          </span>
+        </div>
+      </div>
+    )
+  }
+  return (
+    <img
+      src={src}
+      alt={alt}
+      loading="lazy"
+      onError={() => setFailed(true)}
+      className={`${className} ${imgClassName} object-cover`}
+    />
+  )
+}
+
+/* 3D tilt-on-hover wrapper for cards */
+export function TiltCard({ children, className = "", max = 8 }) {
+  const ref = useRef(null)
+  const reduce = useReducedMotion()
+  const rx = useMotionValue(0)
+  const ry = useMotionValue(0)
+  const sx = useSpring(rx, { stiffness: 200, damping: 18 })
+  const sy = useSpring(ry, { stiffness: 200, damping: 18 })
+
+  function onMove(e) {
+    if (reduce || !ref.current) return
+    const r = ref.current.getBoundingClientRect()
+    const px = (e.clientX - r.left) / r.width - 0.5
+    const py = (e.clientY - r.top) / r.height - 0.5
+    ry.set(px * max)
+    rx.set(-py * max)
+  }
+  function onLeave() {
+    rx.set(0)
+    ry.set(0)
+  }
+
+  return (
+    <motion.div
+      ref={ref}
+      onMouseMove={onMove}
+      onMouseLeave={onLeave}
+      style={{ rotateX: sx, rotateY: sy, transformPerspective: 900 }}
+      className={`will-change-transform ${className}`}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
+/* Thin gradient scroll-progress bar pinned to the top of the page */
+export function ScrollProgress() {
+  const { scrollYProgress } = useScroll()
+  const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 30, mass: 0.3 })
+  return (
+    <motion.div
+      style={{ scaleX }}
+      className="fixed top-0 left-0 right-0 z-[60] h-1 origin-left bg-gradient-to-r from-gold via-flame-bright to-flame"
+    />
+  )
+}
+
+/* Re-export for sections that need raw scroll hooks */
+export { useScroll, useTransform }
 
 export function Flame({ className = "w-5 h-5" }) {
   return (

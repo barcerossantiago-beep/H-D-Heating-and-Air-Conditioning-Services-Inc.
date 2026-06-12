@@ -69,6 +69,29 @@ body {
 .animate-float-a { animation: float-a 11s ease-in-out infinite; }
 .animate-float-b { animation: float-b 14s ease-in-out infinite; }
 
+/* gentle bobbing for hero photo cards (rotation baked in) */
+@keyframes bob-1 {
+  0%, 100% { transform: translateY(0) rotate(3deg); }
+  50% { transform: translateY(-14px) rotate(3deg); }
+}
+@keyframes bob-2 {
+  0%, 100% { transform: translateY(0) rotate(-6deg); }
+  50% { transform: translateY(12px) rotate(-6deg); }
+}
+@keyframes bob-3 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.bob-1 { animation: bob-1 6s ease-in-out infinite; }
+.bob-2 { animation: bob-2 7s ease-in-out infinite 0.4s; }
+.bob-3 { animation: bob-3 5s ease-in-out infinite 0.2s; }
+
+@keyframes scroll-dot {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(8px); opacity: 1; }
+}
+.animate-scroll-dot { animation: scroll-dot 1.6s ease-in-out infinite; }
+
 /* heat shimmer on gradient text */
 @keyframes heat-pan {
   0% { background-position: 0% 50%; }
@@ -88,6 +111,10 @@ body {
   .animate-marquee,
   .animate-float-a,
   .animate-float-b,
+  .bob-1,
+  .bob-2,
+  .bob-3,
+  .animate-scroll-dot,
   .heat-text {
     animation: none;
   }

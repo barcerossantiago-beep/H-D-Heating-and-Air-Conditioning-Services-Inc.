@@ -6,11 +6,13 @@ import Nav from "./components/Nav"
 import Hero from "./components/Hero"
 import Marquee from "./components/Marquee"
 import Services from "./components/Services"
+import Gallery from "./components/Gallery"
 import Stats from "./components/Stats"
 import ServiceArea from "./components/ServiceArea"
 import FAQ from "./components/FAQ"
 import CTA from "./components/CTA"
 import Footer from "./components/Footer"
+import { ScrollProgress } from "./components/shared"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -34,11 +36,13 @@ export default function App() {
 
   return (
     <>
+      <ScrollProgress />
       <Nav />
       <main>
         <Hero />
         <Marquee />
         <Services />
+        <Gallery />
         <Stats />
         <ServiceArea />
         <FAQ />
